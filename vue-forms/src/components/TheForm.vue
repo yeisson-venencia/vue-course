@@ -1,8 +1,8 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+      <input id="user-name" name="user-name" type="text" v-model="userName" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -47,10 +47,29 @@
       </div>
     </div>
     <div>
-      <button>Save Data</button>
+      <button type="submit">Save Data</button>
     </div>
   </form>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      userName: ''
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log('this.userName :>> ', this.userName);
+      this.resetForm();
+    },
+    resetForm() {
+      this.userName = '';
+    }
+  }
+};
+</script>
 
 <style scoped>
 form {
