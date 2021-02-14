@@ -24,6 +24,8 @@ export default {
     confirmAction() {
       // do something
       this.$router.push('/teams');
+      /* this.$router.back()
+      this.$router.forward() */
     }
   }
 };
