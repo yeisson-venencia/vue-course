@@ -22,4 +22,11 @@ li {
   justify-content: center;
   align-items: center;
 }
+
+button {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 </style>
