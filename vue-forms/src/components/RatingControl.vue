@@ -20,6 +20,8 @@
 
 <script>
 export default {
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
   data() {
     return {
       activeOption: null
