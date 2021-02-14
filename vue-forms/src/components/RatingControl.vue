@@ -1,8 +1,8 @@
 <template>
   <ul>
-    <li><button>Poor</button></li>
-    <li><button>Average</button></li>
-    <li><button>Great</button></li>
+    <li><button type="button">Poor</button></li>
+    <li><button type="button">Average</button></li>
+    <li><button type="button">Great</button></li>
   </ul>
 </template>
 
