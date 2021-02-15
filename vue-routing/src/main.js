@@ -18,6 +18,9 @@ const router = new createRouter({
     { path: '/', redirect: '/teams' },
     {
       path: '/teams',
+      meta: {
+        needsAuth: true
+      },
       name: 'teams',
       components: { default: TeamsList, footer: TeamsFooter }, // alias: '/' -> load this component bu doesn't change the route
       children: [
@@ -49,6 +52,9 @@ const router = new createRouter({
 router.beforeEach((to, from, next) => {
   // to and from are both route objects. must call `next`.
   console.log('Global beforeEach');
+  if (to.meta.needsAuth) {
+    console.log('Route needs auth');
+  }
   /* if (to.name === 'team-members') {
     next();
   } else {
