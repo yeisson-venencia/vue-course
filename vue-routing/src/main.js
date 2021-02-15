@@ -8,6 +8,8 @@ import TeamMembers from './components/teams/TeamMembers.vue';
 import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersFooter from './components/users/UsersFooter.vue';
 
+import NotFound from './components/nav/NotFound.vue';
+
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = new createRouter({
@@ -29,7 +31,7 @@ const router = new createRouter({
     },
     { path: '/users', components: { default: UsersList, footer: UsersFooter } },
 
-    { path: '/:notFound(.*)', redirect: '/' }
+    { path: '/:notFound(.*)', component: NotFound }
   ],
   linkActiveClass: 'active'
 });
