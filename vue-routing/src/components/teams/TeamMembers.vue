@@ -9,7 +9,6 @@
         :role="member.role"
       ></user-item>
     </ul>
-    <button @click="goToTeamTwo" type="button">Go to team 2</button>
     <!-- <router-link to="/teams/t2">Go to team 2</router-link> -->
   </section>
 </template>
@@ -26,8 +25,7 @@ export default {
   data() {
     return {
       teamName: null,
-      members: null,
-      dynamicId: null
+      members: null
     };
   },
   methods: {
@@ -39,20 +37,10 @@ export default {
         selectedTeam.members.includes(user.id)
       );
       this.teamName = selectedTeam.name;
-      this.dynamicId = teamId;
-    },
-    goToTeamTwo() {
-      this.$router.push('/teams/t2');
-      this.dynamicId = 't2';
     }
   },
   created() {
     this.loadMembers(this.teamId);
-  },
-  watch: {
-    dynamicId(newTeamId) {
-      this.loadMembers(newTeamId);
-    }
   }
 };
 </script>
