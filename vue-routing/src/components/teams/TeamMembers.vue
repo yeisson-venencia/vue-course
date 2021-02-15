@@ -31,7 +31,7 @@ export default {
   methods: {
     loadMembers(teamId) {
       // this.$route.path -> /teams/{id}
-      // const teamId = route.params.teamId;
+      // const teamId = this.route.params.teamId;
       const selectedTeam = this.teams.find(team => team.id == teamId);
       this.members = this.users.filter(user =>
         selectedTeam.members.includes(user.id)
@@ -40,6 +40,7 @@ export default {
     }
   },
   created() {
+    console.log(this.$route.query);
     this.loadMembers(this.teamId);
   }
 };
