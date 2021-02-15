@@ -19,6 +19,7 @@ import UserItem from '../users/UserItem.vue';
 
 export default {
   inject: ['teams', 'users'],
+  props: ['teamId'],
   components: {
     UserItem
   },
@@ -26,7 +27,7 @@ export default {
     return {
       teamName: null,
       members: null,
-      teamId: null
+      dynamicId: null
     };
   },
   methods: {
@@ -38,18 +39,18 @@ export default {
         selectedTeam.members.includes(user.id)
       );
       this.teamName = selectedTeam.name;
-      this.teamId = teamId;
+      this.dynamicId = teamId;
     },
     goToTeamTwo() {
-      this.teamId = 't2';
+      this.$router.push('/teams/t2');
+      this.dynamicId = 't2';
     }
   },
   created() {
-    const teamId = this.$route.params.teamId;
-    this.loadMembers(teamId);
+    this.loadMembers(this.teamId);
   },
   watch: {
-    teamId(newTeamId) {
+    dynamicId(newTeamId) {
       this.loadMembers(newTeamId);
     }
   }
