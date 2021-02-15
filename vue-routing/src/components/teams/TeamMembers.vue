@@ -9,6 +9,8 @@
         :role="member.role"
       ></user-item>
     </ul>
+    <button @click="goToTeamTwo" type="button">Go to team 2</button>
+    <!-- <router-link to="/teams/t2">Go to team 2</router-link> -->
   </section>
 </template>
 
@@ -23,17 +25,33 @@ export default {
   data() {
     return {
       teamName: null,
-      members: null
+      members: null,
+      teamId: null
     };
   },
+  methods: {
+    loadMembers(teamId) {
+      // this.$route.path -> /teams/{id}
+      // const teamId = route.params.teamId;
+      const selectedTeam = this.teams.find(team => team.id == teamId);
+      this.members = this.users.filter(user =>
+        selectedTeam.members.includes(user.id)
+      );
+      this.teamName = selectedTeam.name;
+      this.teamId = teamId;
+    },
+    goToTeamTwo() {
+      this.teamId = 't2';
+    }
+  },
   created() {
-    // this.$route.path -> /teams/{id}
     const teamId = this.$route.params.teamId;
-    const selectedTeam = this.teams.find(team => team.id == teamId);
-    this.members = this.users.filter(user =>
-      selectedTeam.members.includes(user.id)
-    );
-    this.teamName = selectedTeam.name;
+    this.loadMembers(teamId);
+  },
+  watch: {
+    teamId(newTeamId) {
+      this.loadMembers(newTeamId);
+    }
   }
 };
 </script>
