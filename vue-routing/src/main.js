@@ -10,6 +10,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const router = new createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', redirect: '/teams' },
     { path: '/teams', component: TeamsList },
     { path: '/users', component: UsersList },
     { path: '/teams/:teamId', component: TeamMembers, props: true }
