@@ -3,6 +3,9 @@
     <the-navigation></the-navigation>
     <main>
       <router-view></router-view>
+      <footer>
+        <router-view name="footer"></router-view>
+      </footer>
       <!-- <component :is="activePage"></component> -->
     </main>
   </div>
